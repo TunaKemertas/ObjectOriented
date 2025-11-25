@@ -17,11 +17,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        // Başlangıçta Start paneli açık, GameOver paneli kapalı
+        
         ShowStartMenu(true);
         gameOverPanel.SetActive(false);
 
-        // Button olaylarını bağla
+        
         startButton.onClick.AddListener(OnStartPressed);
         restartButton.onClick.AddListener(OnRestartPressed);
     }
@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
         );
     }
 
-    // Score/Health/Timer güncelleme
+    
     public void UpdateScoreText(int score)
     {
         if (scoreText != null)
@@ -59,14 +59,14 @@ public class UIManager : MonoBehaviour
             timerText.text = $"Time: {Mathf.CeilToInt(timer)}";
     }
 
-    // Start paneli göster/gizle
+   
     public void ShowStartMenu(bool show)
     {
         if (startPanel != null)
             startPanel.SetActive(show);
     }
 
-    // GameOver paneli göster/gizle
+    
     public void ShowGameOver(bool show, bool won = false)
     {
         if (gameOverPanel != null)

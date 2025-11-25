@@ -6,7 +6,7 @@ public enum ItemType { Heal, Weapon, Score }
 
 public class Item : MonoBehaviour
 {
-    // Fields (>=5)
+    
     public string itemName = "HealthPack";
     public ItemType itemType = ItemType.Heal;
     public int value = 20;
@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        // basit jitter hareket veya anim ekleyebilirsin
+        
     }
 
     public void Use(PlayerController player)
@@ -38,12 +38,12 @@ public class Item : MonoBehaviour
                 break;
             case ItemType.Score:
                 player.score += value;
-                // Notify game manager directly if is wanted
+               
                 break;
         }
     }
 
-    // Overloaded Spawn
+   
     public static Item Spawn(Item prefab)
     {
         return Spawn(prefab, Vector2.zero);
@@ -61,7 +61,7 @@ public class Item : MonoBehaviour
         return $"{itemName} ({itemType}) Value:{value}";
     }
 
-    // OnTrigger for pickup alternative (if using trigger)
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController p = collision.GetComponent<PlayerController>();

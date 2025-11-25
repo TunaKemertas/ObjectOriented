@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Fields (en az 5)
+    
     public int score = 0;
     public float gameTimer = 60f; // saniye
     public int currentRound = 1;
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Item itemPrefab;
 
 
-    // Referanslar
+    
     public GameObject enemyPrefab;
     public Transform enemyParent;
     public UIManager uiManager;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Başlangıçta UI ayarları
+        
         uiManager.UpdateScoreText(score);
         uiManager.UpdateTimerText(gameTimer);
         uiManager.ShowStartMenu(true);
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Methods (en az 5)
+  
     public void StartGame()
     {
         score = 0;
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Spawn method with return value
+   
     public int SpawnEnemies(int count)
     {
         int spawned = 0;
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         return spawned;
     }
 
-    // Overloaded Pause (overloaded method example)
+   
     public void PauseGame()
     {
         PauseGame(true);
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = pause ? 0f : 1f;
     }
 
-    // Timer update
+ 
     private void UpdateTimer()
     {
         gameTimer -= Time.deltaTime;
@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Utility to remove dead enemy
     public void NotifyEnemyDeath(GameObject enemy, int scoreValue)
     {
         if (activeEnemies.Contains(enemy)) activeEnemies.Remove(enemy);

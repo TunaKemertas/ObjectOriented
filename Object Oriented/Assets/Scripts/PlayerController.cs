@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Fields (>=5)
+   
     public string playerName = "Hero";
     public float speed = 5f;
     public int maxHealth = 100;
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public int attackPower = 25;
     public int score = 0;
 
-    // References
+    
     private Rigidbody2D rb;
     private Vector2 moveInput;
     public GameManager gameManager;
@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Movement input
+        
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        // Attack key
+       
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TryAttack();
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     // Methods
     public void TryAttack()
     {
-        // basit: etraftaki düşmanlara kapsadayla damage ver
+        
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1.2f);
         foreach (var h in hits)
         {
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             if (enemy != null)
             {
                 Attack(enemy);
-                break; // sadece bir düşmana vur
+                break; 
             }
         }
     }
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         enemy.TakeDamage(attackPower);
     }
 
-    // Overloaded Heal
+ 
     public void Heal()
     {
         Heal(10);
@@ -95,18 +95,18 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log($"{playerName} died.");
         gameManager.EndGame(false);
-        // disable movement
+      
         rb.velocity = Vector2.zero;
         this.enabled = false;
     }
 
-    // Item pickup detection (OnTriggerEnter2D kullanımı)
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Item item = collision.GetComponent<Item>();
         if (item != null)
         {
-            item.Use(this); // item ile etkileşim
+            item.Use(this); 
             Destroy(collision.gameObject);
         }
     }

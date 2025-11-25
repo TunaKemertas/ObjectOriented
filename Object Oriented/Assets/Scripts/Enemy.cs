@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Fields (>=5)
+  
     public string enemyName = "Grunt";
     public int health = 50;
     public int damage = 10;
@@ -60,15 +60,14 @@ public class Enemy : MonoBehaviour
 
     void SpawnItem()
     {
-        // Basit spawn, GameManager veya Item prefab kullanabilirsin
-        Item itemPrefab = Resources.Load<Item>("Prefabs/Item"); // alternatif olarak GameManager referansı kullan
+        
+        Item itemPrefab = Resources.Load<Item>("Prefabs/Item");
         if (itemPrefab != null)
         {
             Instantiate(itemPrefab, transform.position, Quaternion.identity);
         }
     }
 
-    // Overloaded Attack: with player or with damage amount
     public void Attack(PlayerController player)
     {
         if (player != null) player.TakeDamage(damage);
